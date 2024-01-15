@@ -1,5 +1,5 @@
 import sys
-from logger import logging   # from src.logger import logging not working for me as because both files are in the same directory, Python can easily locate logger without needing to search for a non-existent src module inside it. This avoids the circular reference and successfully imports the necessary module.
+from src.logger import logging   # from src.logger import logging not working for me as because both files are in the same directory, Python can easily locate logger without needing to search for a non-existent src module inside it. This avoids the circular reference and successfully imports the necessary module.
 
 
 def error_message_detail(error,error_detail:sys):
