@@ -19,6 +19,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+## We are adding this after creating data_tranformation file 
+from src.components.data_transformation import DataTransformation   
+
 ## Initialize Data Ingestion Configuration
 
 @dataclass
@@ -37,7 +40,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Data Ingestion methods starts")
         try:
-            df=pd.read_csv('./notebooks/data/gemstone.csv')
+            df=pd.read_csv(os.path.join('notebooks/data','gemstone.csv')) # we can use os.path.join() inplace of ('./notebooks/data/gemstone.csv')
             logging.info('Dataset read as pandas Dataframe')
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)   # existe_ok will check if file is already there then it will not create again
             df.to_csv(self.ingestion_config.raw_data_path, index=True)
@@ -64,6 +67,8 @@ class DataIngestion:
 
 if __name__ == "__main__":
     obj=DataIngestion()
-    train_data,test_data=obj.initiate_data_ingestion()
+    train_data_path,test_data_path=obj.initiate_data_ingestion()  # train_data changed to train_data_path   and  test_data changed to test_data_path  after data_transformation for testing of data_trasnformation
+    data_transformation = DataTransformation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data_path,test_data_path)
 
 
