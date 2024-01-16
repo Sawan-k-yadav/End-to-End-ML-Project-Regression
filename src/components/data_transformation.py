@@ -111,7 +111,7 @@ class DataTransformation:
             input_feature_test_arr=preprocessor_obj.transform(input_feature_test_df)
 
             # concating input and target feature so that we can load the data easilly
-            train_arr= np.c_[input_feature_train_arr,np.array(target_feature_train_df)]
+            train_arr= np.c_[input_feature_train_arr,np.array(target_feature_train_df)]  # I was getting error here as I was using () instead of [] as outer braces for concatnation
             test_arr= np.c_[input_feature_test_arr,np.array(target_feature_test_df)]
 
 
