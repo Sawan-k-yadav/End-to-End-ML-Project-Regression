@@ -71,9 +71,11 @@ class DataTransformation:
                             ]
                         )
             
+            logging.info("Pipeline Completed")
+            
             return preprocessor
             
-            logging.info("Pipeline Completed")
+            
 
         except Exception as e:
             logging.info("Error in Data transformation")
